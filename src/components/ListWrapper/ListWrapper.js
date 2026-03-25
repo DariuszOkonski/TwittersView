@@ -6,9 +6,9 @@ import './ListWrapper.css';
 const ListWrapper = () => {
   return (
     <ul className='listWrapper__wrapper'>
-      {twitterAccounts.map((item, index) => (
+      {twitterAccounts.map((item) => (
         <ListItem
-          key={index}
+          key={item.name}
           name={item.name}
           description={item.description}
           image={item.image}
