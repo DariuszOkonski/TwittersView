@@ -3,9 +3,11 @@ import ListWrapper from './components/ListWrapper/ListWrapper';
 import './index.css';
 import { twitterAccounts } from './data/twitterAccounts';
 
+const initialStateArray = [...twitterAccounts];
+
 class App extends React.Component {
   state = {
-    items: [...twitterAccounts],
+    items: [...initialStateArray],
   };
 
   render() {
