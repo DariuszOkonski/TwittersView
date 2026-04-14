@@ -8,7 +8,7 @@ import defaultPicture from './assets/images/defaultPicture.jpg';
 const initialStateItems = [...twitterAccounts];
 
 const checkIfPicture = (picture) => {
-  const extensions = ['.jpg', '.png'];
+  const extensions = ['.jpg', '.png', '.webp'];
   return extensions.some((ext) => picture.includes(ext))
     ? picture
     : defaultPicture;
@@ -32,6 +32,8 @@ class App extends React.Component {
     this.setState({
       items: [...this.state.items, newItem],
     });
+
+    e.target.reset();
   };
 
   render() {
