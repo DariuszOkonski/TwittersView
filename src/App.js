@@ -11,12 +11,17 @@ class App extends React.Component {
     items: [...initialStateItems],
   };
 
+  addItem = (e) => {
+    e.preventDefault();
+    console.log(e.target);
+  };
+
   render() {
     return (
       <div className='wrapper'>
         <ListWrapper items={this.state.items} />
 
-        <Form />
+        <Form submitFn={this.addItem} />
       </div>
     );
   }
