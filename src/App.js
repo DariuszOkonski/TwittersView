@@ -1,6 +1,6 @@
 import React from 'react';
 import ListWrapper from './components/ListWrapper/ListWrapper';
-import './index.css';
+import './index.module.scss';
 import { twitterAccounts } from './data/twitterAccounts';
 import Form from './components/ListWrapper/Form/Form';
 import defaultPicture from './assets/images/defaultPicture.jpg';
