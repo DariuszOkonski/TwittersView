@@ -7,6 +7,7 @@ const Form = ({ submitFn }) => (
     <form className={styles.form} onSubmit={submitFn}>
       <div className={styles.item}>
         <input
+          required
           className={styles.input}
           type='text'
           name='name'
@@ -21,6 +22,7 @@ const Form = ({ submitFn }) => (
       </div>
       <div className={styles.item}>
         <input
+          required
           className={styles.input}
           type='text'
           name='link'
@@ -34,6 +36,7 @@ const Form = ({ submitFn }) => (
       </div>
       <div className={styles.item}>
         <input
+          required
           className={styles.input}
           type='text'
           name='image'
@@ -47,6 +50,7 @@ const Form = ({ submitFn }) => (
       </div>
       <div className={styles.item}>
         <textarea
+          required
           className={styles.textarea}
           name='description'
           id='description'
