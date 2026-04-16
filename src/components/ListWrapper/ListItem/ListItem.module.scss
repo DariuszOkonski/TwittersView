@@ -26,6 +26,12 @@
   border-radius: 50%;
 }
 
+.imageNone {
+  @extend .image;
+
+  background: lightgray;
+}
+
 .name {
   margin: 0;
   color: #1e58ff;

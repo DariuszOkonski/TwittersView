@@ -7,12 +7,12 @@ import defaultPicture from './assets/images/defaultPicture.jpg';
 
 const initialStateItems = [...twitterAccounts];
 
-const checkIfPicture = (picture) => {
-  const extensions = ['.jpg', '.png', '.webp'];
-  return extensions.some((ext) => picture.includes(ext))
-    ? picture
-    : defaultPicture;
-};
+// const checkIfPicture = (picture) => {
+//   const extensions = ['.jpg', '.png', '.webp'];
+//   return extensions.some((ext) => picture.includes(ext))
+//     ? picture
+//     : defaultPicture;
+// };
 
 class App extends React.Component {
   state = {
@@ -25,7 +25,8 @@ class App extends React.Component {
     const newItem = {
       name: e.target[0].value,
       twitterLink: e.target[1].value,
-      image: checkIfPicture(e.target[2].value),
+      // image: checkIfPicture(e.target[2].value),
+      image: e.target[2].value,
       description: e.target[3].value,
     };
 

@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import styles from './ListItem.module.scss';
 
 const ListItem = ({ name, description, image, twitterLink }) => {
+  const ImageTag = image ? 'img' : 'div';
+
   return (
     <li className={styles.wrapper}>
-      <img src={image} className={styles.image} alt={name} />
+      <ImageTag
+        src={image}
+        className={image ? styles.image : styles.imageNone}
+        alt={name}
+      />
       <div>
         <h2 className={styles.name}>{name}</h2>
         <p className={styles.description}>{description}</p>
@@ -25,11 +31,11 @@ const ListItem = ({ name, description, image, twitterLink }) => {
 ListItem.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string,
-  image: PropTypes.string.isRequired,
   twitterLink: PropTypes.string.isRequired,
 };
 
 ListItem.defaultProps = {
+  image: null,
   description: 'One of the React creators',
 };
 

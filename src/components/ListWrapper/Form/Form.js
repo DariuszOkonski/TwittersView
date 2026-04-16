@@ -36,7 +36,6 @@ const Form = ({ submitFn }) => (
       </div>
       <div className={styles.item}>
         <input
-          required
           className={styles.input}
           type='text'
           name='image'
