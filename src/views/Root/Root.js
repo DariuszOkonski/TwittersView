@@ -1,6 +1,6 @@
 import React from 'react';
 import List from '../../components/List/List';
-import '../../index.module.scss';
+import './index.module.scss';
 import { twitterAccounts } from '../../data/twitterAccounts';
 import Form from '../../components/Form/Form';
 
