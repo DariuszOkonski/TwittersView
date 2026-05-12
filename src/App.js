@@ -1,8 +1,8 @@
 import React from 'react';
-import List from './components/ListWrapper/List';
+import List from './components/List/List';
 import './index.module.scss';
 import { twitterAccounts } from './data/twitterAccounts';
-import Form from './components/ListWrapper/Form/Form';
+import Form from './components/Form/Form';
 import defaultPicture from './assets/images/defaultPicture.jpg';
 
 const initialStateItems = [...twitterAccounts];
