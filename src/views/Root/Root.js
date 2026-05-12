@@ -1,8 +1,6 @@
 import React from 'react';
-import List from '../../components/List/List';
 import './index.module.scss';
 import { twitterAccounts } from '../../data/twitterAccounts';
-import Form from '../../components/Form/Form';
 
 const initialStateItems = [...twitterAccounts];
 
@@ -39,9 +37,7 @@ class Root extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        <List items={this.state.items} />
-
-        <Form submitFn={this.addItem} />
+        <h1>Hello world</h1>
       </div>
     );
   }
