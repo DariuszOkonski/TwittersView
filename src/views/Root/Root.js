@@ -1,9 +1,8 @@
 import React from 'react';
-import List from './components/List/List';
-import './index.module.scss';
-import { twitterAccounts } from './data/twitterAccounts';
-import Form from './components/Form/Form';
-import defaultPicture from './assets/images/defaultPicture.jpg';
+import List from '../../components/List/List';
+import '../../index.module.scss';
+import { twitterAccounts } from '../../data/twitterAccounts';
+import Form from '../../components/Form/Form';
 
 const initialStateItems = [...twitterAccounts];
 
@@ -14,7 +13,7 @@ const initialStateItems = [...twitterAccounts];
 //     : defaultPicture;
 // };
 
-class App extends React.Component {
+class Root extends React.Component {
   state = {
     items: [...initialStateItems],
   };
@@ -48,4 +47,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Root;
