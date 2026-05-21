@@ -10,16 +10,10 @@ import Modal from '../../components/Modal/Modal';
 
 const initialStateItems = [...twitterAccounts];
 
-// const checkIfPicture = (picture) => {
-//   const extensions = ['.jpg', '.png', '.webp'];
-//   return extensions.some((ext) => picture.includes(ext))
-//     ? picture
-//     : defaultPicture;
-// };
-
 class Root extends React.Component {
   state = {
     items: [...initialStateItems],
+    isModalOpen: false,
   };
 
   addItem = (e) => {
@@ -28,7 +22,6 @@ class Root extends React.Component {
     const newItem = {
       name: e.target[0].value,
       twitterLink: e.target[1].value,
-      // image: checkIfPicture(e.target[2].value),
       image: e.target[2].value,
       description: e.target[3].value,
     };
@@ -40,17 +33,32 @@ class Root extends React.Component {
     e.target.reset();
   };
 
+  openModal = () => {
+    this.setState({
+      isModalOpen: true,
+    });
+  };
+
+  closeModal = () => {
+    this.setState({
+      isModalOpen: false,
+    });
+  };
+
   render() {
+    const { isModalOpen } = this.state;
+
     return (
       <BrowserRouter>
         <React.Fragment>
-          <Header />
+          <Header openModalFn={this.openModal} />
+          <h1>hello world</h1>
           <Switch>
             <Route exact path='/' component={TwittersView} />
             <Route path='/articles' component={ArticlesView} />
             <Route path='/notes' component={NotesView} />
           </Switch>
-          <Modal />
+          {isModalOpen && <Modal closeModalFn={this.closeModal} />}
         </React.Fragment>
       </BrowserRouter>
     );

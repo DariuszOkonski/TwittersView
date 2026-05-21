@@ -23,13 +23,12 @@ const Input = ({ tag: Tag, name, label, maxLength }) => {
 };
 
 Input.propTypes = {
-  tag: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.string, PropTypes.elementType]),
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   maxLength: PropTypes.number,
 };
-
-Input.propTypes = {
+Input.defaultProps = {
   tag: 'input',
   maxLength: 200,
 };
