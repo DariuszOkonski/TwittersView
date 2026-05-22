@@ -5,7 +5,9 @@ import Form from '../Form/Form';
 const Modal = ({ closeModalFn }) => {
   return (
     <div className={styles.wrapper}>
-      <button onClick={closeModalFn}>close me</button>
+      <button className={styles.button} onClick={closeModalFn}>
+        x
+      </button>
       <Form submitFn={() => console.log('submit')} />
     </div>
   );
