@@ -3,6 +3,7 @@ import styles from './Form.module.scss';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Title from '../Title/Title';
+import Radio from '../Radio/Radio';
 
 const types = {
   twitter: 'twitter',
@@ -37,29 +38,29 @@ class Form extends React.Component {
           onSubmit={this.props.submitFn}
         >
           <div className={styles.formOptions}>
-            <input
-              type='radio'
+            <Radio
               id={types.twitter}
               checked={this.state.activeOption === types.twitter}
-              onChange={() => this.handleRadioButtonChange(types.twitter)}
-            />
-            <label htmlFor={types.twitter}>Twitter</label>
+              changeFn={() => this.handleRadioButtonChange(types.twitter)}
+            >
+              Twitter
+            </Radio>
 
-            <input
-              type='radio'
+            <Radio
               checked={this.state.activeOption === types.article}
               id={types.article}
-              onChange={() => this.handleRadioButtonChange(types.article)}
-            />
-            <label htmlFor={types.article}>Article</label>
+              changeFn={() => this.handleRadioButtonChange(types.article)}
+            >
+              Article
+            </Radio>
 
-            <input
-              type='radio'
+            <Radio
               checked={this.state.activeOption === types.note}
               id={types.note}
-              onChange={() => this.handleRadioButtonChange(types.note)}
-            />
-            <label htmlFor={types.note}>Note</label>
+              changeFn={() => this.handleRadioButtonChange(types.note)}
+            >
+              Note
+            </Radio>
           </div>
           <Input tag='input' name='name' label='Name' maxLength={30} />
           <Input tag='input' name='link' label='Twitter Link' />
