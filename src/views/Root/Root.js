@@ -7,6 +7,7 @@ import ArticlesView from '../ArticlesView/ArticlesView';
 import NotesView from '../NotesView/NotesView';
 import Header from '../../components/Header/Header';
 import Modal from '../../components/Modal/Modal';
+import AppContext from '../../context';
 
 const initialStateItems = [...twitterAccounts];
 
@@ -14,6 +15,7 @@ class Root extends React.Component {
   state = {
     items: [...initialStateItems],
     isModalOpen: false,
+    name: 'Roman',
   };
 
   addItem = (e) => {
@@ -50,16 +52,18 @@ class Root extends React.Component {
 
     return (
       <BrowserRouter>
-        <React.Fragment>
-          <Header openModalFn={this.openModal} />
-          <h1>hello world</h1>
-          <Switch>
-            <Route exact path='/' component={TwittersView} />
-            <Route path='/articles' component={ArticlesView} />
-            <Route path='/notes' component={NotesView} />
-          </Switch>
-          {isModalOpen && <Modal closeModalFn={this.closeModal} />}
-        </React.Fragment>
+        <AppContext.Provider value={this.state.name}>
+          <React.Fragment>
+            <Header openModalFn={this.openModal} />
+            <h1>hello world</h1>
+            <Switch>
+              <Route exact path='/' component={TwittersView} />
+              <Route path='/articles' component={ArticlesView} />
+              <Route path='/notes' component={NotesView} />
+            </Switch>
+            {isModalOpen && <Modal closeModalFn={this.closeModal} />}
+          </React.Fragment>
+        </AppContext.Provider>
       </BrowserRouter>
     );
   }
