@@ -4,6 +4,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Title from '../Title/Title';
 import Radio from './Radio/Radio';
+import AppContext from '../../context';
 
 const types = {
   twitter: 'twitter',
@@ -32,60 +33,68 @@ class Form extends React.Component {
     const { activeOption } = this.state;
 
     return (
-      <div className={styles.wrapper}>
-        <Title>Add new {description[activeOption]}</Title>
-        <form
-          autoComplete='off'
-          className={styles.form}
-          onSubmit={this.props.submitFn}
-        >
-          <div className={styles.formOptions}>
-            <Radio
-              id={types.twitter}
-              checked={activeOption === types.twitter}
-              changeFn={() => this.handleRadioButtonChange(types.twitter)}
+      <AppContext.Consumer>
+        {(context) => (
+          <div className={styles.wrapper}>
+            <Title>Add new {description[activeOption]}</Title>
+            <form
+              autoComplete='off'
+              className={styles.form}
+              onSubmit={context.addItem}
             >
-              Twitter
-            </Radio>
+              <div className={styles.formOptions}>
+                <Radio
+                  id={types.twitter}
+                  checked={activeOption === types.twitter}
+                  changeFn={() => this.handleRadioButtonChange(types.twitter)}
+                >
+                  Twitter
+                </Radio>
 
-            <Radio
-              checked={activeOption === types.article}
-              id={types.article}
-              changeFn={() => this.handleRadioButtonChange(types.article)}
-            >
-              Article
-            </Radio>
+                <Radio
+                  checked={activeOption === types.article}
+                  id={types.article}
+                  changeFn={() => this.handleRadioButtonChange(types.article)}
+                >
+                  Article
+                </Radio>
 
-            <Radio
-              checked={activeOption === types.note}
-              id={types.note}
-              changeFn={() => this.handleRadioButtonChange(types.note)}
-            >
-              Note
-            </Radio>
+                <Radio
+                  checked={activeOption === types.note}
+                  id={types.note}
+                  changeFn={() => this.handleRadioButtonChange(types.note)}
+                >
+                  Note
+                </Radio>
+              </div>
+              <Input
+                tag='input'
+                name='name'
+                label={
+                  activeOption === types.twitter ? 'Twitter Name' : 'Title'
+                }
+                maxLength={30}
+              />
+              {activeOption !== types.note ? (
+                <Input
+                  tag='input'
+                  name='link'
+                  label={
+                    activeOption === types.twitter ? 'Twitter Link' : 'Link'
+                  }
+                />
+              ) : null}
+
+              {activeOption === types.twitter ? (
+                <Input tag='input' name='image' label='Image' />
+              ) : null}
+              <Input tag='textarea' name='description' label='Description' />
+
+              <Button>add new item</Button>
+            </form>
           </div>
-          <Input
-            tag='input'
-            name='name'
-            label={activeOption === types.twitter ? 'Twitter Name' : 'Title'}
-            maxLength={30}
-          />
-          {activeOption !== types.note ? (
-            <Input
-              tag='input'
-              name='link'
-              label={activeOption === types.twitter ? 'Twitter Link' : 'Link'}
-            />
-          ) : null}
-
-          {activeOption === types.twitter ? (
-            <Input tag='input' name='image' label='Image' />
-          ) : null}
-          <Input tag='textarea' name='description' label='Description' />
-
-          <Button>add new item</Button>
-        </form>
-      </div>
+        )}
+      </AppContext.Consumer>
     );
   }
 }

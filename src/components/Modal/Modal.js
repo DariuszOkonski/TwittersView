@@ -8,7 +8,7 @@ const Modal = ({ closeModalFn }) => {
       <button className={styles.button} onClick={closeModalFn}>
         x
       </button>
-      <Form submitFn={() => console.log('submit')} />
+      <Form />
     </div>
   );
 };
