@@ -21,11 +21,21 @@ const description = {
 class Form extends React.Component {
   state = {
     activeOption: types.twitter,
+    title: '',
+    link: '',
+    image: '',
+    description: '',
   };
 
   handleRadioButtonChange = (type) => {
     this.setState({
       activeOption: type,
+    });
+  };
+
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -68,8 +78,10 @@ class Form extends React.Component {
                 </Radio>
               </div>
               <Input
+                value={this.state.title}
+                onChange={this.handleInputChange}
                 tag='input'
-                name='name'
+                name='title'
                 label={
                   activeOption === types.twitter ? 'Twitter Name' : 'Title'
                 }
@@ -77,6 +89,8 @@ class Form extends React.Component {
               />
               {activeOption !== types.note ? (
                 <Input
+                  value={this.state.link}
+                  onChange={this.handleInputChange}
                   tag='input'
                   name='link'
                   label={
@@ -86,9 +100,21 @@ class Form extends React.Component {
               ) : null}
 
               {activeOption === types.twitter ? (
-                <Input tag='input' name='image' label='Image' />
+                <Input
+                  value={this.state.image}
+                  onChange={this.handleInputChange}
+                  tag='input'
+                  name='image'
+                  label='Image'
+                />
               ) : null}
-              <Input tag='textarea' name='description' label='Description' />
+              <Input
+                value={this.state.description}
+                onChange={this.handleInputChange}
+                tag='textarea'
+                name='description'
+                label='Description'
+              />
 
               <Button>add new item</Button>
             </form>
