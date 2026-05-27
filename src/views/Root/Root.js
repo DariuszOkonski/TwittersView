@@ -13,31 +13,20 @@ import AppContext from '../../context';
 
 class Root extends React.Component {
   state = {
-    items: {
-      twitters: [],
-      articles: [],
-      notes: [],
-    },
+    twitter: [],
+    article: [],
+    note: [],
     isModalOpen: false,
   };
 
-  addItem = (e) => {
+  addItem = (e, newItem) => {
     e.preventDefault();
 
-    console.log('!!! it works');
+    this.setState((prevState) => ({
+      [newItem.type]: [...prevState[newItem.type], newItem],
+    }));
 
-    // const newItem = {
-    //   name: e.target[0].value,
-    //   twitterLink: e.target[1].value,
-    //   image: e.target[2].value,
-    //   description: e.target[3].value,
-    // };
-
-    // this.setState({
-    //   items: [...this.state.items, newItem],
-    // });
-
-    // e.target.reset();
+    this.closeModal();
   };
 
   openModal = () => {
@@ -64,7 +53,6 @@ class Root extends React.Component {
         <AppContext.Provider value={contextElements}>
           <React.Fragment>
             <Header openModalFn={this.openModal} />
-            <h1>hello world</h1>
             <Switch>
               <Route exact path='/' component={TwittersView} />
               <Route path='/articles' component={ArticlesView} />
