@@ -6,7 +6,7 @@ const ListWrapper = ({ items }) => {
   return (
     <React.Fragment>
       {items.length ? (
-        <ul className={styles.wrapper}>
+        <ul>
           {items.map((item) => (
             <ListItem key={crypto.randomUUID()} {...item} />
           ))}

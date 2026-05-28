@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.module.scss';
-// import { twitterAccounts } from '../../data/twitterAccounts';
+import { twitterAccounts } from '../../data/twitterAccounts';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import TwittersView from '../TwittersView/TwittersView';
 import ArticlesView from '../ArticlesView/ArticlesView';
@@ -9,7 +9,7 @@ import Header from '../../components/Header/Header';
 import Modal from '../../components/Modal/Modal';
 import AppContext from '../../context';
 
-// const initialStateItems = [...twitterAccounts];
+const initialStateItems = [...twitterAccounts];
 
 class Root extends React.Component {
   state = {
